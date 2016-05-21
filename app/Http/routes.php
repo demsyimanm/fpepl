@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('index');
 });
+Route::get('dailylog','HomeController@dailylog');
