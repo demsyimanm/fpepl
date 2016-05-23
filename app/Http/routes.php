@@ -12,6 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('login');
 });
 Route::get('dailylog','HomeController@dailylog');
+Route::get('companylist','HomeController@listperusahaan');
+Route::post('login','HomeController@login');
+Route::post('postdailylog','HomeController@posdailylog');
+Route::get('register','HomeController@register');
+route::post('regisform','HomeController@regisform');
+Route::get('dashboard','HomeController@dashboard');
+route::get('internform','HomeController@intern');
+route::post('tambahperusahaan','HomeController@tambahperusahaan');
+Route::get('proposal','HomeController@proposal');
+Route::post('daftarkp','HomeController@daftarkp');
+Route::get('logout','HomeController@logout');

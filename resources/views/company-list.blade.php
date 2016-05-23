@@ -29,6 +29,15 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+      <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" type="text/css" href="{{URL::to ('swal/dist/sweetalert.css')}}">
+    <script src="{{URL::to ('swal/dist/sweetalert.min.js')}}"></script>
+
+<script type="text/javascript">
+    function notifberhasil(){
+    swal("Sukses", "tambah perusahaan berhasil!", "success")
+    }
+  </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,7 +48,9 @@
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
+@if (Session::has('registersukses1'))
+   <script type="text/javascript">notifberhasil();</script>
+   @endif
       <header class="main-header">
         <!-- Logo -->
         <a href="index.html" class="logo">
@@ -192,10 +203,7 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
-          <div class="row">
-
-            <div class="col-md-3">
+           <div class="col-md-3">
               <div class="box box-solid">
                 <div class="box-header with-border">
                   <h3 class="box-title">Daftar Perusahaan :</h3>
@@ -206,52 +214,81 @@
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
                     <!--<li href="#">19 April 2016 <span class="label label-primary pull-right">12</span></a></li>-->
-					<li class="active"><a href="#">Bank Indonesia - Jakarta </a></li>					
-                    <li><a href="#">PLN Bali</a></li>
-                    <li><a href="#">Lembaga Penerbangan dan Antariksa (LAPAN)</a></li>
-                    <li><a href="#">Software House XX</a></li>
-                    <li><a href="#">BukaLapak.com</a></li>
-                    <li><a href="#">tukarcincin.com</a></li>
-                    <li><a href="#">Game House AB</a></li>
-                    <li><a href="#">International Office ITS</a></li>
-                    <li><a href="#">LPTSI</a></li>
-                    <li><a href="#">DiLo</a></li>					
+                 
+                    @foreach($list as $key)
+                    <li><a href="#" >{{$key->nm_lemb}}</a>
+                    <ul>
+                    
+                    </ul>
+                    </li>
+
+                    @endforeach
+                    
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
             </div><!-- /.col -->
-		  
-            <div class="col-md-6">
-              <div class="box box-primary">
-                <div class="box-header">
-                  <h3 class="box-title">Nama Perusahaan</h3>
-                </div>
-                <div class="box-body">
-                   <div class="form-group">
-<!--                      <label for="inputCompany">Email address</label> -->
-                      <text type="text" class="form-control" id="inputCompany" placeholder="Nama perusahaan">
-                    </div>
-                 </div><!-- /.box-body -->			
-				<div class="box-header">
-                  <h3 class="box-title">Alamat Perusahaan</h3>
-				</div>
-                <div class="box-body">
-                   <div class="form-group">
-<!--                      <label for="inputCompany">Email address</label> -->
-                      <text type="text" class="form-control" id="inputAddress" placeholder="Alamat perusahaan">
-                    </div>
-                </div><!-- /.box-body -->			
-				<div class="box-header">
-                  <h3 class="box-title">Kode Pos Perusahaan</h3>
-				</div>
-                <div class="box-body">
-                   <div class="form-group">
-<!--                      <label for="inputCompany">Email address</label> -->
-                      <text type="text" class="form-control" id="inputPostCode" placeholder="Alamat perusahaan">
-                    </div>
-                 </div><!-- /.box-body -->			
+        <section class="content">
+          <div class="row">
 
-              </div><!-- /.box -->
+         
+		  
+        </div>
+          <form action="{{URL::to('tambahperusahaan')}}" method="POST">
+          <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                
+              </div>
+              <div class="form-group">
+                <label>Nama Perusahaan</label>
+                <input type="text" class="form-control" id="corpname" name="nama" value="">
+              </div>
+              <div class="form-group">
+                <label>Alamat</label>
+                <input type="text" class="form-control" id="corpaddress" name="alamat" value="">
+              </div>
+               
+            </div>
+            <div class="col-md-4">
+              
+              <div class="form-group">
+                <label>Person In Charge</label>
+                <input type="text" class="form-control" id="corppost_code" name="personincharge" value="">
+              </div>
+              <div class="form-group">
+                <label>Jabatan Person In Charge</label>
+                <input type="text" class="form-control" id="corppost_code" name="jabatan" value="">
+              </div>
+              <div class="form-group">
+                <label>Telp Kantor</label>
+                <input type="text" class="form-control" id="corptelp" name="telpon" value="">
+              </div>
+             
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Jenis Bisnis</label>
+                <input type="text" class="form-control" id="corpbusiness_type" name="jenisbisnis" value="">
+              </div>
+              <div class="form-group">
+                <label>Profil</label>
+                <textarea class="form-control" rows="4" id="corpdescription" name="profil"></textarea>
+              </div>
+            </div>
+          </div>
+         
+            </div>
+          </div>
+             <div class="panel-footer text-right">
+             {{csrf_field()}}
+          <button type="submit"class="btn btn-success">Submit</button>
+        </div>
+        </form>
+       
+   
 			  
 				
             </div><!-- /.col (right) -->
@@ -359,5 +396,21 @@
         });
       });
     </script>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
   </body>
 </html>

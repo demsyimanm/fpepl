@@ -254,7 +254,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6 col-sm-6">
-                    <a href="#" class="portfolio-box">
+                    <a href="{{URL::to('dailylog')}}" class="portfolio-box">
                         <img src="img/portfolio/3.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">

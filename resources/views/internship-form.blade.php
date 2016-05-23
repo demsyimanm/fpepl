@@ -27,6 +27,13 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+     <link rel="stylesheet" type="text/css" href="{{URL::to ('swal/dist/sweetalert.css')}}">
+    <script src="{{URL::to ('swal/dist/sweetalert.min.js')}}"></script>
+    <script type="text/javascript">
+    function notifberhasil(){
+    swal("Sukses", "Registrasi berhasil!", "success")
+    }
+  </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,7 +44,9 @@
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
-
+ @if (Session::has('sukses'))
+   <script type="text/javascript">notifberhasil();</script>
+   @endif
       <header class="main-header">
         <!-- Logo -->
         <a href="../../index2.html" class="logo">
@@ -158,7 +167,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">USER MENU</li>
-            <li class="active treeview">
+            <li class="treeview">
               <a href="internship-form.html">
                 <i class="fa fa-dashboard"></i> <span>Internship Form</span>
               </a>
@@ -173,7 +182,7 @@
                 <i class="fa fa-edit"></i> <span>Daily Log</span>
               </a>
             </li>
-            <li class="treeview">
+            <li class="active treeview">
               <a href="company-list.html">
                 <i class="fa fa-edit"></i> <span>Company List</span>
               </a>
@@ -188,72 +197,127 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Advanced Form Elements
-            <small>Preview</small>
+            MonitoringKP
+            <!--<small>Preview</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="#">Forms</a></li>
             <li class="active">Advanced Elements</li>
           </ol>
+      -->
         </section>
 
         <!-- Main content -->
         <section class="content">
           <div class="row">
             <div class="col-md-6">
-              <div class="box box-primary">
+              <div class="box box-primary" style="width:200%">
+        <!---
                 <div class="box-header">
                   <h3 class="box-title">Range Waktu KP :</h3>
                 </div>
                 <div class="box-body">
-                  <!-- Date range -->
+                  <Date range ->
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
                       <input type="text" class="form-control pull-right" id="reservation">
-                    </div><!-- /.input group -->
-                  </div><!-- /.form group -->
+                    </div><input group ->
+                  </div><!-- /.form group ->
                 </div><!-- /.box-body -->
-				<div class="box-body">
-					<div class="box-header">
-						<h3 class="box-title">Company Name :</h3>
-					</div><!-- /.box-header -->
-					<div class="box-body pad">
-						<form>
-							<input class="form-control" id="inputNamaPerusahaan" placeholder="Place some text here" >
-						</form>
-					</div>
-				</div>
-				<div class="box-body">
-					<div class="box-header">
-						<h3 class="box-title">Address :</h3>
-					</div><!-- /.box-header -->
-					<div class="box-body pad">
-						<form>
-							<input class="form-control" id="alamatPerusahaan" placeholder="Alamat Perusahaan" >
-						</form>
-						<br>
-						<a href="#" class="btn btn-primary btn-block margin-bottom">SUBMIT</a>				  
-					</div>
-				</div>
+        <div class="box-body">
+          <div class="box-header">
+            <h3 class="box-title">Pengajuan Kelompok KP</h3>
+          </div><!-- /.box-header -->
+          <div class="box-body pad">
+       
+          </div>
+        </div>
+         <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+              <form action="daftarkp" method="POST">
+                <label>Perusahaan</label>
+                <select class="form-control" id="corporation" name="perusahaan">
+
+                  <option value="0">-</option>
+                      @foreach($list as $key)
+                         <option value="{{$key->id_dudi}}">{{$key->nm_lemb}}</option>
+                      @endforeach
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Nama Kelompok</label>
+                <div>    <input type="text" name="namakelompok"></input></div>
+            
+              </div>
+              
+          <hr>
+          <div class="row" style="width:150%">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Tanggal Mulai</label>
+                <input type="date" data-provide="datepicker" class="datepicker form-control" name="tanggalmulai" >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Tanggal Selesai</label>
+                <input type="date" data-provide="datepicker" class="datepicker form-control" name="tanggalselesai" value="">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Kelompok</label>
+                <select class="form-control" name="friend">
+                  <option value="0">-</option>
+                        @foreach($mahasiswa as $key)
+                         <option value="{{$key->id}}">{{$key->nm_pd}}</option>
+                          @endforeach              
+                    </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+      <div class="panel-footer text-right">
+      {{csrf_field()}}
+          <button class="btn btn-success">Submit</button>
+        </div>
+        </form>
+        <!--
+        </div>
+      </div>
+    </form>
+          </div>
+      </div>
+    </div>
+       
+        <div class="panel-footer text-right">
+          <button class="btn btn-success">Submit</button>
+        </div>
+        -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
           </div><!-- /.row -->
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-	  
+    
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.3.0
         </div>
         <strong>Copyright &copy; APL Kelompok 2.</strong> All rights reserved.
       </footer>
-	  
-	<!-- jQuery 2.1.4 -->
+    
+  <!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>

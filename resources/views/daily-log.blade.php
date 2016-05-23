@@ -220,7 +220,7 @@
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
             </div><!-- /.col -->
-		  
+		      <form action="{{URL::to('postdailylog')}}" method="POST">
             <div class="col-md-6">
               <div class="box box-primary">
                 <div class="box-header">
@@ -233,7 +233,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" class="form-control pull-right" id="reservation">
+                      <input type="text" class="form-control pull-right" id="reservation" name="tanggal">
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                 </div><!-- /.box-body -->			
@@ -246,10 +246,12 @@
                   </div><!-- /. tools -->
                 </div><!-- /.box-header -->
                 <div class="box-body pad">
-                  <form>
-                    <textarea id="editor1" name="editor1"  class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                  </form>
-				  <a href="#" class="btn btn-primary btn-block margin-bottom">SUBMIT</a>				  
+              
+                    <textarea id="editor1" name="konten"  class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                
+                  {{csrf_field()}}
+				  <button type="submit"  class="btn btn-primary btn-block margin-bottom">SUBMIT</button>
+            </form>				  
                 </div>
               </div><!-- /.box -->
 			  
