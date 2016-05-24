@@ -202,11 +202,11 @@
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
+      <div class="content-wrapper" >
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header"style="margin-bottom:5%">
           <h1>
-            Dashboard
+            Pengajuan Kerja Praktik
           </h1>
           <ol class="breadcrumb">
           </ol>
@@ -225,24 +225,56 @@
 
         </section><!-- /.content 
       </div><!-- /.content-wrapper -->
-	  
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-8 col-sm-6">
-                    <a href="img/portfolio/1.jpg" class="portfolio-box" download>
-                        <img src="img/portfolio/1.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Click to download here!
-                                </div>
-                                <div class="project-name">
-                                    File 01
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+
+    <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Daftar Pengajuan</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table no-margin">
+                      <thead>
+                        <tr>
+                          <th>Nama kelompok</th>
+                          <th>Nama perusahaan</th>
+                          <th>Dosen Lapangan</th>
+                          <th>Tanggal Mulai</th>
+                          <th>Tanggal Selesai</th>
+                          <th>Dosen Pembimbing</th>
+                          <th>Status</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <?php 
+                          foreach ($kelompok as $key ) {
+                            $namakelompok=$key->nm_kel;
+                          }
+                          foreach ($dudi as $key ) {
+                            $namaperusahaan=$key->nm_lemb;
+                            $pic=$key->pic;
+                          }
+                          ?>
+                     
+                        <tr>
+                      @foreach($ajuan as $key)
+                          <td>{{$namakelompok}}</td>
+                          <td>{{$namaperusahaan}}</td>
+                          <td>{{$pic}}</td>
+                          <td>{{$key->tanggal_mulai}}</td>
+                          <td>{{$key->tanggal_selesai}}</td>
+                          <td></td>
+                          <td></td>
+                        @endforeach
+                         
+                        
+                      </tbody>
+                    </table>
+                  </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
 					<!--<p><strong>A</strong></p>-->
                 </div>
             </div>

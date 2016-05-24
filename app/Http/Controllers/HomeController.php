@@ -31,7 +31,23 @@ class HomeController extends Controller
     return view('index');
   }
     public function proposal(){
-    return view('internship-proposal');
+      
+      $iduser=Auth::user()->id;
+      $ajuankp=ajuankp::where('id_pd','=',$iduser)->first();
+      $idajuankp=$ajuankp['id_ajuan_kp'];
+      $idkelompok=$ajuankp['id_kel_pd'];
+      $iddudi=$ajuankp['id_dudi'];
+      $data=array();
+      $data['kelompok']=kelompok::where('id_kel_pd','=',$idkelompok)->get();
+      $data['dudi']=companylist::where('id_dudi','=',$iddudi)->get();
+      $data['ajuan']=ajuankp::where('id_pd','=',$iduser)->get();
+
+      //dd($data);
+     
+
+
+
+  return view('internship-proposal',$data);
   }
 
   public function intern(){
