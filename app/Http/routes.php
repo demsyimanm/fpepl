@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('login');
 });
-Route::get('dailylog','HomeController@dailylog');
+Route::get('dailylog/{id_akt?}','HomeController@dailylog');
 Route::get('companylist','HomeController@listperusahaan');
 Route::post('login','HomeController@login');
 Route::post('postdailylog','HomeController@posdailylog');

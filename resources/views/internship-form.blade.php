@@ -49,7 +49,7 @@
    @endif
       <header class="main-header">
         <!-- Logo -->
-        <a href="../../index2.html" class="logo">
+        <a href="dashboard" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>A</b>LT</span>
           <!-- logo for regular state and mobile devices -->
@@ -168,22 +168,22 @@
           <ul class="sidebar-menu">
             <li class="header">USER MENU</li>
             <li class="treeview">
-              <a href="internship-form.html">
+              <a href="internform">
                 <i class="fa fa-dashboard"></i> <span>Internship Form</span>
               </a>
             </li>
             <li class="treeview">
-              <a href="internship-proposal.html">
+              <a href="proposal">
                 <i class="fa fa-edit"></i> <span>Internship Proposal</span>
               </a>
             </li>
             <li class="treeview">
-              <a href="daily-log.html">
+              <a href="dailylog">
                 <i class="fa fa-edit"></i> <span>Daily Log</span>
               </a>
             </li>
-            <li class="active treeview">
-              <a href="company-list.html">
+            <li class="treeview">
+              <a href="companylist">
                 <i class="fa fa-edit"></i> <span>Company List</span>
               </a>
             </li>

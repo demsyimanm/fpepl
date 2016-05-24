@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Uuid;
-use App\pesertadidik;
 use Auth;
 use Input;
 use Session;
 use Validator;
 use DB;
+use App\pesertadidik;
 use App\dailylog;
 use App\companylist;
 use App\kelompok;
@@ -43,10 +43,6 @@ class HomeController extends Controller
       $data['ajuan']=ajuankp::where('id_pd','=',$iduser)->get();
 
       //dd($data);
-     
-
-
-
   return view('internship-proposal',$data);
   }
 
@@ -56,10 +52,28 @@ class HomeController extends Controller
     $data['mahasiswa']=pesertadidik::get();
     return view('internship-form',$data);
   }
-  public function dailylog(){
-    return view ('daily-log');
+  public function dailylog($id_akt=null){
+    /*GET LOGS FROM CURRENT USER*/
+    //get iduser from session
+    $iduser=Auth::user()->id;
+    //get idkp from iduser
+    $idkp = ajuankp::where('id_pd','=',$iduser)->first();
+    //get all the logs
+    $data['logs']=dailylog::where('id_ajuan_kp','=',$idkp->id_ajuan_kp)->get();
+    /*CHECK IF ALREADY SELECTED*/
+    // if($id_akt){
+    //   $idActivity=$id_akt;
+    //   $data['activity'] = dailylog::where('id_akt_kp','=',$idActivity)->first();
+    // }
+    // dd($data);    
+    return view ('daily-log',$data);
   }
-
+  public function selectdailylog($id_akt){
+    $idActivity=$id_akt;
+    $data = dailylog::where('id_akt_kp','=',$idActivity)->first();
+    // dd($data);
+    return view ('daily-log',$data);
+  }
   public function daftarkp(){
         $data=input::all();
         $idkelompok=Uuid::generate();
@@ -71,7 +85,6 @@ class HomeController extends Controller
             'id_pd1'    => $iduser1,
             'id_pd2'    => $data['friend'],
             'created_at'=> $tanggal
-
         ));
 
         ajuankp::insert(array(
@@ -102,14 +115,20 @@ class HomeController extends Controller
 
   public function posdailylog(){
     $data=input::all();
+    $idlog=Uuid::generate();
+    $iduser=Auth::user()->id;
+    $idkp = ajuankp::where('id_pd','=',$iduser)->first();
+    // dd($data);
       dailylog::insert(array(
+            'id_akt_kp'=> $idlog,
+            'id_ajuan_kp'=> $idkp->id_ajuan_kp,
             'konten'=> $data['konten'],
             'tanggal'=>$data['tanggal']
             ));
-
-      return "pos ok";
+      return redirect('dailylog');
             
   }
+  
 
   public function tambahperusahaan(){
      $data=input::all();
@@ -166,19 +185,21 @@ class HomeController extends Controller
   public function regisform(){
     $data=input::all();
     $id = Uuid::generate();
-   $password=bcrypt( $data['password']);
-      pesertadidik::insert(array(
-            'id'     => $id,
-            'nm_pd'     =>$data['nama'],
-            'jk'        =>$data['jeniskelamin'],
-            'tgl_lahir' =>$data['tanggallahir'],
-            'nrp'       =>$data['nrp'],
-            'email'     =>$data['email'],
-            'no_hp'     =>$data['telpon'],
-            'password'  =>$password
-            ));
-       session::flash('registersukses','ok');
-       return redirect('/');
+    $password=bcrypt( $data['password']);
+    
+
+    pesertadidik::insert(array(
+          'id'     => $id,
+          'nm_pd'     =>$data['nama'],
+          'jk'        =>$data['jeniskelamin'],
+          'tgl_lahir' =>$data['tanggallahir'],
+          'nrp'       =>$data['nrp'],
+          'email'     =>$data['email'],
+          'no_hp'     =>$data['telpon'],
+          'password'  =>$password
+          ));  
+     session::flash('registersukses','ok');
+     return redirect('/');
 
   }
 

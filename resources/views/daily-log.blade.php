@@ -15,7 +15,7 @@
     <!-- daterange picker -->
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- daterange picker -->
-    <link rel="stylesheet" href="plugins/daterangepicker/datepicker3.css">	
+    <link rel="stylesheet" href="plugins/daterangepicker/datepicker3.css">  
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="plugins/iCheck/all.css">
     <!-- Bootstrap Color Picker -->
@@ -42,7 +42,7 @@
 
       <header class="main-header">
         <!-- Logo -->
-        <a href="index.html" class="logo">
+        <a href="dashboard" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>A</b>LT</span>
           <!-- logo for regular state and mobile devices -->
@@ -161,22 +161,22 @@
           <ul class="sidebar-menu">
             <li class="header">USER MENU</li>
             <li class="treeview">
-              <a href="internship-form.html">
+              <a href="internform">
                 <i class="fa fa-dashboard"></i> <span>Internship Form</span>
               </a>
             </li>
             <li class="treeview">
-              <a href="internship-proposal.html">
+              <a href="proposal">
                 <i class="fa fa-edit"></i> <span>Internship Proposal</span>
               </a>
             </li>
-            <li class="active treeview">
-              <a href="daily-log.html">
+            <li class="treeview">
+              <a href="dailylog">
                 <i class="fa fa-edit"></i> <span>Daily Log</span>
               </a>
             </li>
             <li class="treeview">
-              <a href="company-list.html">
+              <a href="companylist">
                 <i class="fa fa-edit"></i> <span>Company List</span>
               </a>
             </li>
@@ -206,21 +206,19 @@
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
                     <!--<li href="#">19 April 2016 <span class="label label-primary pull-right">12</span></a></li>-->
-					<li><a href="#">19 April 2016 </a></li>					
-                    <li><a href="#">20 April 2016</a></li>
-                    <li><a href="#">23 April 2016</a></li>
-                    <li><a href="#">27 April 2016</a></li>
-                    <li><a href="#">31 April 2016</a></li>
-                    <li><a href="#">02 Mei 2016</a></li>
-                    <li><a href="#">10 Mei 2016</a></li>
-                    <li><a href="#">12 Mei 2016</a></li>
-                    <li><a href="#">13 Mei 2016</a></li>
-                    <li><a href="#">14 Mei 2016</a></li>					
+          @foreach($logs as $key)
+          <li><a href="" >{{$key->tanggal}}</a>
+          <ul>
+
+          </ul>
+          </li>
+
+          @endforeach    
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
             </div><!-- /.col -->
-		      <form action="{{URL::to('postdailylog')}}" method="POST">
+          <form action="{{URL::to('postdailylog')}}" method="POST">
             <div class="col-md-6">
               <div class="box box-primary">
                 <div class="box-header">
@@ -236,8 +234,8 @@
                       <input type="text" class="form-control pull-right" id="reservation" name="tanggal">
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
-                </div><!-- /.box-body -->			
-				<div class="box-header">
+                </div><!-- /.box-body -->     
+        <div class="box-header">
                   <h3 class="box-title">Isi Entri :</h3>
                   <!-- tools box -->
                   <div class="pull-right box-tools">
@@ -250,26 +248,26 @@
                     <textarea id="editor1" name="konten"  class="textarea" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 
                   {{csrf_field()}}
-				  <button type="submit"  class="btn btn-primary btn-block margin-bottom">SUBMIT</button>
-            </form>				  
+          <button type="submit"  class="btn btn-primary btn-block margin-bottom">SUBMIT</button>
+            </form>         
                 </div>
               </div><!-- /.box -->
-			  
-				
+        
+        
             </div><!-- /.col (right) -->
           </div><!-- /.row -->
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
-	  
+    
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.3.0
         </div>
         <strong>Copyright &copy; APL Kelompok 2.</strong> All rights reserved.
       </footer>
-	  
-	<!-- jQuery 2.1.4 -->
+    
+  <!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -282,8 +280,8 @@
     <!-- date-range-picker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="plugins/daterangepicker/daterangepicker.js"></script>
-	<!--date picker--->
-	<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
+  <!--date picker--->
+  <script src="plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- bootstrap color picker -->
     <script src="plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
     <!-- bootstrap time picker -->
