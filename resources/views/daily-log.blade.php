@@ -167,7 +167,7 @@
             </li>
             <li class="treeview">
               <a href="proposal">
-                <i class="fa fa-edit"></i> <span>Internship Proposal</span>
+                <i class="fa fa-edit"></i> <span>Status Pengajuan</span>
               </a>
             </li>
             <li class="treeview">
@@ -207,13 +207,36 @@
                   <ul class="nav nav-pills nav-stacked">
                     <!--<li href="#">19 April 2016 <span class="label label-primary pull-right">12</span></a></li>-->
           @foreach($logs as $key)
-          <li><a href="" >{{$key->tanggal}}</a>
+          <li><a data-toggle="modal" data-target="#myModal{{$key->id_akt_kp}}" type="submit" data-id="{{$key->id_akt_kp}}">{{$key->tanggal}}</a>
           <ul>
 
           </ul>
           </li>
 
-          @endforeach    
+          @endforeach  
+          @foreach($logs as $key ) 
+   
+      <div id="myModal{{$key->id_akt_kp}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">DAILY LOG</h4>
+              <h5 class="modal-title">Tanggal : {{$key->tanggal}}</h5>
+            
+            </div>
+            <div class="modal-body">
+            
+             <p>{{$key->konten}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>      
+    @endforeach  
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->

@@ -178,7 +178,7 @@
             </li>
             <li class="treeview">
               <a href="proposal">
-                <i class="fa fa-edit"></i> <span>Internship Proposal</span>
+                <i class="fa fa-edit"></i> <span>Status Pengajuan</span>
               </a>
             </li>
             <li class="treeview">
@@ -214,28 +214,78 @@
                 <div class="box-body no-padding">
                   <ul class="nav nav-pills nav-stacked">
                     <!--<li href="#">19 April 2016 <span class="label label-primary pull-right">12</span></a></li>-->
-                 
+                    
                     @foreach($list as $key)
-                    <li><a href="#" >{{$key->nm_lemb}}</a>
+                  
+                    <li><a data-toggle="modal" data-target="#myModal{{$key->id_dudi}}" type="submit" data-id="{{$key->id_dudi}}"> {{$key->nm_lemb}}</a>
                     <ul>
                     
                     </ul>
                     </li>
 
                     @endforeach
-                    
+      
+       <script type="text/javascript" src="js/jquery.js"></script>  
+        @foreach($list as $key)
+         
+        <script type="text/javascript">
+            $(document).ready(function(){
+              $('#{{$key->id_dudi}}').click(function(){
+                alert($(this).text());
+              });
+            });
+       </script>
+         @endforeach
+@foreach($list as $key ) 
+   
+      <div id="myModal{{$key->id_dudi}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">{{$key->nm_lemb}}</h4>
+             <table style="width:100%"> 
+            
+              <tr><td>Penanggung jawab</td> <td> <pre>{{$key->pic}}</pre></td></tr>
+              <tr><td>Jabatan</td>      <td> <pre>{{$key->jabatan_pic}}</pre></td></tr>
+              <tr><td>Jenis Bisnis</td> <td> <pre>{{$key->jenis}}</td></pre></tr>
+              <tr><td>alamat</td>       <td> <pre>{{$key->jl}}</td></pre></tr>
+              <tr><td>telpon</td>       <td> <pre>{{$key->telpon}}</td></pre></tr>
+          
+              </table>
+            </div>
+            <div class="modal-body">
+             <h4 class="modal-title">Deskripsi perusahaan :</h4>
+             <p>{{$key->profil}}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>      
+    @endforeach
+
+
+
+     
                   </ul>
                 </div><!-- /.box-body -->
               </div><!-- /. box -->
             </div><!-- /.col -->
+
         <section class="content">
+
           <div class="row">
 
-         
 		  
         </div>
           <form action="{{URL::to('tambahperusahaan')}}" method="POST">
+          <div> <h3 class="box-title">Tambah Perusahaan :</h3></div>
           <div class="panel panel-default">
+
+         
         <div class="panel-body">
           <div class="row">
             <div class="col-md-4">
@@ -303,7 +353,8 @@
         </div>
         <strong>Copyright &copy; APL Kelompok 2.</strong> All rights reserved.
       </footer>
-	  
+
+    
 	<!-- jQuery 2.1.4 -->
     <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
@@ -396,6 +447,7 @@
         });
       });
     </script>
+
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">

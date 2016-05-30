@@ -183,7 +183,7 @@
             </li>
             <li class="treeview">
               <a href="proposal">
-                <i class="fa fa-edit"></i> <span>Internship Proposal</span>
+                <i class="fa fa-edit"></i> <span>Status Pengajuan</span>
               </a>
             </li>
             <li class="treeview">
