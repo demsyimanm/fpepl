@@ -7,10 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class dailylog extends Model
 {
     public $table = "aktivitas_kerja_praktek";
-    protected $fillable = array(
+    protected $primaryKey = 'id';
+    protected $fillable =[
 	'konten',
-	'id_akt_kp',
-	'id_ajuan_kp',
+	'ajuan_kp_id',
 	'tanggal'
 
-	);}
+	];
+
+    public function ajuan_kp()
+	{
+		return $this->belongsTo('App\ajuankp');
+	}
+
+}

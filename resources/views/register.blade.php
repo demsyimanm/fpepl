@@ -32,6 +32,19 @@
 
       <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
+        @if(Session::has('status') && Session::get('status') == 'exist')
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-ban"></i> Failed!</h4>
+            NRP Anda sudah ada
+          </div>
+        @elseif(Session::has('status') && Session::get('status') == 'register-failed')
+          <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <h4><i class="icon fa fa-ban"></i> Failed!</h4>
+            NRP anda tidak mempunyai hak akses ke dalam sistem
+          </div>
+        @endif
         <form action="{{URL::to('regisform')}}" method="post">
         <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="NRP" name="nrp">
@@ -50,13 +63,10 @@
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-          <div> <label>Jenis kelamin : </label></div>
-         
-            <select name="jeniskelamin">
-                <option value="L">Laki-laki</option>
-                <option value="P">Perempuan</option>               
-          </select>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          <div> <label>Jenis kelamin : </label> <select style="width: 100%" name="jeniskelamin">
+              <option value="L">Laki-laki</option>
+              <option value="P">Perempuan</option>
+            </select></div>
           </div>
            <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="No telpon" name="telpon">
@@ -69,23 +79,16 @@
           
           <div class="row">
             <div class="col-xs-8">
-              <div class="checkbox icheck">
-                <label>
-                  <input type="checkbox"> I agree to the <a href="#">terms</a>
-                </label>
-              </div>
             </div><!-- /.col -->
             <div class="col-xs-4">
             {{csrf_field()}}
               <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-            }
-            }
             </div><!-- /.col -->
           </div>
         </form>
 
        
-        <a href="login.html" class="text-center">I already have a membership</a>
+        <a href="{{URL::to('')}}" class="text-center">I already have a membership</a>
       </div><!-- /.form-box -->
     </div><!-- /.register-box -->
 

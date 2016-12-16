@@ -7,10 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class kelompokkp extends Model
 {
     public $table = "anggota_kel_pd";
-    protected $fillable = array(
-	'id_kel_pd',
-	'id_pd1',
-	'id_pd2',
-	'created_at'
-	);
+    protected $primaryKey = 'id';
+    protected $fillable = [
+	'peserta_didik_id',
+	'peserta_didik_2_id'
+	];
+
+	public function peserta_didik()
+	{
+		return $this->belongsTo('App\pesertadidik');
+	}
+
+	public function peserta_didik2()
+	{
+		return $this->belongsTo('App\pesertadidik','peserta_didik_2_id','id');
+	}
+
+	public function kelompok_pd()
+	{
+		return $this->belongsTo('App\kelompok');
+	}
 }
