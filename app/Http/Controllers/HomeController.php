@@ -43,7 +43,7 @@ class HomeController extends Controller
     {
         $id=Auth::user()->nm_pd;
         if(Auth::user()->role == 3) return redirect('dashboard');
-        elseif(Auth::user()->role == 1) return redirect('dashboard/admin');
+        elseif(Auth::user()->role == 1) return redirect('dashboard');
     }
     else{
 

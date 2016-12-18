@@ -19,6 +19,8 @@ Route::get('logout','HomeController@logout');
 Route::get('register','HomeController@register');
 route::post('regisform','HomeController@regisform');
 Route::get('dashboard','HomeController@dashboard');
+Route::get('dashboard/admin','HomeController@dashboardAdmin');
+Route::get('dashboard/dosen','HomeController@dosen');
 
 Route::get('dailylog/{id_akt?}','DailyLogController@dailylog');
 Route::get('dailyLog/remove/{id_akt}','DailyLogController@dailylogRemove');

@@ -12,31 +12,32 @@
           <div class="box-header">
             <h3 class="box-title">Pengajuan KP yang Diterima</h3>
           </div><!-- /.box-header -->
-          <table id="datatable" class="table table-borderd table-striped">
-            <thead>
-              <tr>
-                <th>Nama Pemohon</th>
-                <th>Nama perusahaan</th>
-                <th>Dosen Lapangan</th>
-                <th>Tanggal Mulai</th>
-                <th>Tanggal Selesai</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($reqs as $key)
+            <table id="datatable" class="table table-borderd table-striped">
+                <thead>
                 <tr>
-                  <td>{{$key->peserta_didik->nm_pd}}</td>
-                  <td>{{$key->companylist->nm_lemb}}</td>
-                  <td>{{$key->companylist->pic}}</td>
-                  <td>{{$key->tanggal_mulai}}</td>
-                  <td>{{$key->tanggal_selesai}}</td>
-                  <td>
-                    <a href="{{url('logs/'.$key->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i> Lihat Catatan</a>
-                  </td>
+                    <th>Nama Pemohon</th>
+                    <th>Nama perusahaan</th>
+                    <th>Dosen Lapangan</th>
+                    <th>Tanggal Mulai</th>
+                    <th>Tanggal Selesai</th>
+                    <th>Action</th>
                 </tr>
-               @endforeach
-              </tbody>
+                </thead>
+                <tbody>
+                @foreach($reqs as $key)
+                    <tr>
+                        <td>{{$key->peserta_didik->nm_pd}}</td>
+                        <td>{{$key->companylist->nm_lemb}}</td>
+                        <td>{{$key->companylist->pic}}</td>
+                        <td>{{$key->tanggal_mulai}}</td>
+                        <td>{{$key->tanggal_selesai}}</td>
+                        <td>
+                            <a href="{{url('logs/'.$key->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i> Lihat
+                                Catatan</a>
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
             </table>
           <div class="box-body pad">
        
