@@ -52,7 +52,7 @@ class InternController extends Controller
             'peserta_didik_id' => $iduser,
             'peserta_didik_2_id' => $data['friend'],
             'created_at' => $tanggal,
-            'kelompok_pd_id' => $uuid
+            'kelompok_pd_id' => $idkelompok
         ));
 
         kelompok::insert(array(

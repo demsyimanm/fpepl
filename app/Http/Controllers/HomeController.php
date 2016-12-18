@@ -30,7 +30,8 @@ class HomeController extends Controller
             $news = ajuankp::where('status', 0)->get();
             return view('admin.permohonan', compact('news'));
         } else {
-            
+            $reqs = ajuankp::where('status',1)->where('dosbing_id',Auth::id())->get();
+            return view('admin.approved', compact('reqs'));
         }
     }
 

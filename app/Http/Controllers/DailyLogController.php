@@ -24,6 +24,7 @@ class DailyLogController extends Controller
         $cek = ajuankp::where('peserta_didik_id',$iduser)->count();
         if($cek > 0)
         {
+//            dd($ajuankp);
             $data['logs'] = dailylog::where('ajuan_kp_id', '=', $ajuankp->id)->get();
             $data['flag'] = 1;
         }
@@ -60,7 +61,8 @@ class DailyLogController extends Controller
             'id' => $uuid,
             'ajuan_kp_id' => $idkp->id,
             'konten' => $data['konten'],
-            'tanggal' => $tgl
+            'tanggal' => $tgl,
+            'readed' => 0
         ));
         return redirect('dailylog');
 
@@ -74,7 +76,9 @@ class DailyLogController extends Controller
         foreach ($kelompok as $item) {
             array_push($items, $item->id);
         }
-        $ajuankp = ajuankp::whereIn('kelompok_pd_id', $items)->first();
+        $ajuankp = ajuankp::whereIn('kelompok_pd_id', $items)->where('status',1)->first();
+
+//        dd($ajuankp);
         return array($iduser, $ajuankp);
     }
 

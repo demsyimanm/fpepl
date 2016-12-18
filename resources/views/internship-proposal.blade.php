@@ -9,6 +9,9 @@
         </ol>
     </section>
 
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
     <div class="box box-info">
         <div class="box-header with-border">
             <h3 class="box-title">Daftar Pengajuan</h3>
@@ -58,5 +61,7 @@
         </div><!-- /.box-body -->
         <!--<p><strong>A</strong></p>-->
     </div>
+    </div>
+    <div class="col-md-1"></div>
 
 @endsection
