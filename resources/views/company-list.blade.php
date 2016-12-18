@@ -19,8 +19,8 @@
                             <tbody>
                             @foreach($list as $key)
                                 <tr>
-                                    <td><a data-toggle="modal" data-target="#myModal{{$key->id_dudi}}" type="submit"
-                                           data-id="{{$key->id_dudi}}"> {{$key->nm_lemb}}</a>
+                                    <td><a data-toggle="modal" data-target="#myModal{{$key->id}}" type="submit"
+                                           data-id="{{$key->id}}"> {{$key->nm_lemb}}</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -33,7 +33,7 @@
 
                     <script type="text/javascript">
                         $(document).ready(function () {
-                            $('#{{$key->id_dudi}}').click(function () {
+                            $('#{{$key->id}}').click(function () {
                                 alert($(this).text());
                             });
                         });
@@ -41,7 +41,7 @@
                 @endforeach
                 @foreach($list as $key )
 
-                    <div id="myModal{{$key->id_dudi}}" class="modal fade" role="dialog">
+                    <div id="myModal{{$key->id}}" class="modal fade" role="dialog">
                         <div class="modal-dialog">
                             <!-- Modal content-->
                             <div class="modal-content">

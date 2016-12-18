@@ -34,7 +34,7 @@ class InternController extends Controller
             $data['cek']=0;
         }
         $data['list'] = companylist::where('soft_delete',0)->get();
-        $data['mahasiswa'] = pesertadidik::where('nrp', '!=', Auth::user()->nrp)->get();
+        $data['mahasiswa'] = pesertadidik::where('nrp', '!=', Auth::user()->nrp)->where('role',3)->get();
         return view('internship-form', $data);
     }
 
@@ -52,7 +52,7 @@ class InternController extends Controller
             'peserta_didik_id' => $iduser,
             'peserta_didik_2_id' => $data['friend'],
             'created_at' => $tanggal,
-            'ajuankp_id' => $uuid
+            'kelompok_pd_id' => $uuid
         ));
 
         kelompok::insert(array(
@@ -66,6 +66,7 @@ class InternController extends Controller
             'companylist_id' => $data['perusahaan'],
             'kelompok_pd_id' => $idkelompok ,
             'tgl_ajuan' => $tanggal,
+            'status' => 0,
             'tanggal_mulai' => $tglMulai,
             'tanggal_selesai' => $tglSelesai
         ));

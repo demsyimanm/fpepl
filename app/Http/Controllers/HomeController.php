@@ -17,107 +17,108 @@ use App\ajuankp;
 
 class HomeController extends Controller
 {
-  public function logout()
-  {
-      Auth::logout();        
-      return redirect('/');
-  }
-
-  public function dashboard(){
-    if(Auth::user()->role == 3) return view('index');
-    elseif(Auth::user()->role == 1)
+    public function logout()
     {
-      $news = ajuankp::where('status',0)->get();
-    return view('admin.permohonan', compact('news'));
+        Auth::logout();
+        return redirect('/');
     }
-  }
 
-  public function dashboardAdmin(){
-    
-  }
-
-  public function login(Request $request){
-    $new = $request->only('nrp','password');
-
-    if (Auth::attempt($new,true))
+    public function dashboard()
     {
-        $id=Auth::user()->nm_pd;
-        if(Auth::user()->role == 3) return redirect('dashboard');
-        elseif(Auth::user()->role == 1) return redirect('dashboard');
+        if (Auth::user()->role == 3) return view('index');
+        elseif (Auth::user()->role == 1) {
+            $news = ajuankp::where('status', 0)->get();
+            return view('admin.permohonan', compact('news'));
+        } else {
+            
+        }
     }
-    else{
 
-        Session::flash('status','failed');
+    public function dashboardAdmin()
+    {
+
+    }
+
+    public function login(Request $request)
+    {
+        $new = $request->only('nrp', 'password');
+
+        if (Auth::attempt($new, true)) {
+            $id = Auth::user()->nm_pd;
+            return redirect('dashboard');
+        } else {
+
+            Session::flash('status', 'failed');
+            return redirect('/');
+
+        }
+    }
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function regisform()
+    {
+        $data = input::all();
+        $id = Uuid::generate();
+        $password = bcrypt($data['password']);
+        $cek = pesertadidik::where('nrp', $data['nrp'])->count();
+
+        if ($cek > 0) {
+            Session::flash('status', 'exist');
+            return view('register');
+        } else if (substr($data['nrp'], 0, 2) != '51') {
+            Session::flash('status', 'register-failed');
+            return view('register');
+        }
+        pesertadidik::insert(array(
+            'id' => $id,
+            'nm_pd' => $data['nama'],
+            'jk' => $data['jeniskelamin'],
+            'tgl_lahir' => $data['tanggallahir'],
+            'nrp' => $data['nrp'],
+            'email' => $data['email'],
+            'no_hp' => $data['telpon'],
+            'password' => $password,
+            'role' => 3
+        ));
+        session::flash('registersukses', 'ok');
         return redirect('/');
 
-    } 
-  }
-
-  public function register(){
-    return view('register');
-  }
-
-  public function regisform(){
-    $data=input::all();
-    $id = Uuid::generate();
-    $password=bcrypt( $data['password']);
-    $cek = pesertadidik::where('nrp',$data['nrp'])->count();
-    
-    if($cek > 0) 
-    {
-      Session::flash('status','exist');
-      return view('register');
     }
-    else if(substr($data['nrp'], 0,2)!= '51')
+
+    public function registerDosen()
     {
-      Session::flash('status','register-failed');
-      return view('register');
+        return view('dosen.register');
     }
-    pesertadidik::insert(array(
-          'id'        =>$id,
-          'nm_pd'     =>$data['nama'],
-          'jk'        =>$data['jeniskelamin'],
-          'tgl_lahir' =>$data['tanggallahir'],
-          'nrp'       =>$data['nrp'],
-          'email'     =>$data['email'],
-          'no_hp'     =>$data['telpon'],
-          'password'  =>$password,
-          'role'      => 3
-          ));  
-     session::flash('registersukses','ok');
-     return redirect('/');
 
-  }
-
-  public function registerDosen(){
-    return view('dosen.register');
-  }
-
-  public function regisformDosen(){
-    $data=input::all();
-    $id = Uuid::generate();
-    $password=bcrypt( $data['password']);
-    $cek = pesertadidik::where('nrp',$data['nrp'])->count();
-    
-    if($cek > 0) 
+    public function regisformDosen()
     {
-      Session::flash('status','exist');
-      return view('dosen.register');
-    }
-    pesertadidik::insert(array(
-          'id'        =>$id,
-          'nm_pd'     =>$data['nama'],
-          'jk'        =>$data['jeniskelamin'],
-          'tgl_lahir' =>$data['tanggallahir'],
-          'nrp'       =>$data['nrp'],
-          'email'     =>$data['email'],
-          'no_hp'     =>$data['telpon'],
-          'password'  =>$password,
-          'role'      => 2
-          ));  
-     session::flash('registersukses','ok');
-     return redirect('/');
+        $data = input::all();
+        $id = Uuid::generate();
+        $password = bcrypt($data['password']);
+        $cek = pesertadidik::where('nrp', $data['nrp'])->count();
 
-  }
+        if ($cek > 0) {
+            Session::flash('status', 'exist');
+            return view('dosen.register');
+        }
+        pesertadidik::insert(array(
+            'id' => $id,
+            'nm_pd' => $data['nama'],
+            'jk' => $data['jeniskelamin'],
+            'tgl_lahir' => $data['tanggallahir'],
+            'nrp' => $data['nrp'],
+            'email' => $data['email'],
+            'no_hp' => $data['telpon'],
+            'password' => $password,
+            'role' => 2
+        ));
+        session::flash('registersukses', 'ok');
+        return redirect('/');
+
+    }
 
 }
