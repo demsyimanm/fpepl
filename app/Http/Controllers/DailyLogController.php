@@ -21,7 +21,7 @@ class DailyLogController extends Controller
     public function dailylog($id_akt = null)
     {
         list($iduser, $ajuankp) = $this->ajuanKPbyUser();
-        $cek = ajuankp::where('peserta_didik_id',$iduser)->count();
+        $cek = ajuankp::where('peserta_didik_id',$iduser)->where('status',1)->count();
         if($cek > 0)
         {
 //            dd($ajuankp);

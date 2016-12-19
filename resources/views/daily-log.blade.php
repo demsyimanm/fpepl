@@ -20,6 +20,10 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php
+                            if($flag != 0)
+                            {
+                            ?>
                             @foreach($logs as $key)
                                 <tr>
                                     <td>{{$key->tanggal}}</td>
@@ -30,6 +34,9 @@
                                         </button></td>
                                 </tr>
                             @endforeach
+                            <?php
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
