@@ -66,7 +66,7 @@
                 </li>
                 <li class="treeview">
                     <a href="{{url('proposal')}}">
-                        <i class="fa fa-edit"></i> <span>Status Pengajuan</span>
+                        <i class="fa fa-check"></i> <span>Status Pengajuan</span>
                     </a>
                 </li>
                 <li class="treeview">
@@ -74,7 +74,11 @@
                         <i class="fa fa-edit"></i> <span>Catatan Harian</span>
                     </a>
                 </li>
-
+                <li class="treeview">
+                    <a href="{{url('companylist')}}">
+                        <i class="fa fa-building-o"></i> <span>Daftar Perusahaan</span>
+                    </a>
+                </li>
             @elseif(Auth::user()->role == 1)
                 <li class="treeview">
                     <a href="{{url('dashboard')}}">

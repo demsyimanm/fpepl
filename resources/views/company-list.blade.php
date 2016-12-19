@@ -88,13 +88,15 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-success" data-dismiss="modal">Close
                                     </button>
-                                    <button type="button" class="btn btn-default"
+                                    <button type="button" class="btn btn-warning"
                                             onclick="update('{{URL::to('company/update/'.$key->id)}}')">
                                         Update
                                     </button>
+                                    @if(Auth::user()->role == 1 or Auth::user()->role == 2)
                                     <button type="button" class="btn btn-danger"
                                             onclick="dele('{{URL::to('company/remove/'.$key->id)}}')">Delete
                                     </button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -122,11 +124,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Nama Perusahaan</label>
-                                    <input type="text" class="form-control" id="corpname" name="nama" value="">
+                                    <input type="text" class="form-control" id="corpname" name="nama" value="" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Alamat</label>
-                                    <input type="text" class="form-control" id="corpaddress" name="alamat" value="">
+                                    <input type="text" class="form-control" id="corpaddress" name="alamat" value="" required="">
                                 </div>
 
                             </div>
@@ -135,16 +137,16 @@
                                 <div class="form-group">
                                     <label>Person In Charge</label>
                                     <input type="text" class="form-control" id="corppost_code" name="personincharge"
-                                           value="">
+                                           value="" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Jabatan Person In Charge</label>
                                     <input type="text" class="form-control" id="corppost_code" name="jabatan"
-                                           value="">
+                                           value="" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Telp Kantor</label>
-                                    <input type="text" class="form-control" id="corptelp" name="telpon" value="">
+                                    <input type="text" class="form-control" id="corptelp" name="telpon" value="" required="">
                                 </div>
 
                             </div>
@@ -153,12 +155,12 @@
                                     <label>Jenis Bisnis</label>
                                     <input type="text" class="form-control" id="corpbusiness_type"
                                            name="jenisbisnis"
-                                           value="">
+                                           value="" required="">
                                 </div>
                                 <div class="form-group">
                                     <label>Profil</label>
                                         <textarea class="form-control" rows="4" id="corpdescription"
-                                                  name="profil"></textarea>
+                                                  name="profil" required=""></textarea>
                                 </div>
                             </div>
                         </div>

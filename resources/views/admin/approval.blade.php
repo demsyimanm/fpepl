@@ -49,7 +49,7 @@
               <div class="col-md-12" style="margin-top:1%">
                 <div class="col-md-5">
                   <label>Dosen Pembimbing</label>
-                  <select name="dosbing" class="form-control">
+                  <select name="dosbing" class="form-control" required="">
                     @foreach($lecturers as $lecturer)
                       <option value="{{$lecturer->id}}">{{$lecturer->nm_pd}}</option>
                     @endforeach
@@ -59,7 +59,7 @@
               <div class="col-md-12" style="margin-top:1%">
                 <div class="col-md-5">
                   <label>Approval</label>
-                  <select name="status" class="form-control">
+                  <select name="status" class="form-control" required="">
                       <option value="1">Terima</option>
                       <option value="2">Tolak</option>
                   </select>

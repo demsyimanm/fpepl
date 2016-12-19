@@ -47,33 +47,33 @@
         @endif
         <form action="{{URL::to('regisform')}}" method="post">
         <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="NRP" name="nrp">
+            <input type="text" class="form-control" placeholder="NRP" name="nrp" required="">
             <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Nama lengkap" name="nama">
+            <input type="text" class="form-control" placeholder="Nama lengkap" name="nama" required="">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
            <div class="form-group has-feedback">
-            <input type="date" class="form-control" placeholder="Tanggal Lahir" name="tanggallahir">
+            <input type="date" class="form-control" placeholder="Tanggal Lahir" name="tanggallahir" required="">
             <span class="glyphicon glyphicon-time form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email" name="email">
+            <input type="email" class="form-control" placeholder="Email" name="email" required="">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-          <div> <label>Jenis kelamin : </label> <select style="width: 100%" name="jeniskelamin">
+          <div> <label>Jenis kelamin : </label> <select style="width: 100%" name="jeniskelamin" required="">
               <option value="L">Laki-laki</option>
               <option value="P">Perempuan</option>
             </select></div>
           </div>
            <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="No telpon" name="telpon">
+            <input type="text" class="form-control" placeholder="No telpon" name="telpon" required="">
             <span class="glyphicon glyphicon-phone form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="password" class="form-control" placeholder="Password" name="password" required="">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           

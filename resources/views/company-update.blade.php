@@ -16,11 +16,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Nama Perusahaan</label>
-                                <input type="text" class="form-control" id="corpname" name="nama" value="{{$item->nm_lemb}}">
+                                <input type="text" class="form-control" id="corpname" name="nama" value="{{$item->nm_lemb}}" required="">
                             </div>
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" class="form-control" id="corpaddress" name="alamat" value="{{$item->jl}}">
+                                <input type="text" class="form-control" id="corpaddress" name="alamat" value="{{$item->jl}}" required="">
                                 <input type="hidden" class="form-control" name="id" value="{{$item->id}}">
                             </div>
 
@@ -30,15 +30,15 @@
                             <div class="form-group">
                                 <label>Person In Charge</label>
                                 <input type="text" class="form-control" id="corppost_code" name="personincharge"
-                                       value="{{$item->pic}}">
+                                       value="{{$item->pic}}" required="">
                             </div>
                             <div class="form-group">
                                 <label>Jabatan Person In Charge</label>
-                                <input type="text" class="form-control" id="corppost_code" name="jabatan" value="{{$item->jabatan_pic}}">
+                                <input type="text" class="form-control" id="corppost_code" name="jabatan" value="{{$item->jabatan_pic}}" required="">
                             </div>
                             <div class="form-group">
                                 <label>Telp Kantor</label>
-                                <input type="text" class="form-control" id="corptelp" name="telpon" value="{{$item->telpon}}">
+                                <input type="text" class="form-control" id="corptelp" name="telpon" value="{{$item->telpon}}" required="">
                             </div>
 
                         </div>
@@ -46,11 +46,11 @@
                             <div class="form-group">
                                 <label>Jenis Bisnis</label>
                                 <input type="text" class="form-control" id="corpbusiness_type" name="jenisbisnis"
-                                       value="{{$item->jenis}}">
+                                       value="{{$item->jenis}}" required="">
                             </div>
                             <div class="form-group">
                                 <label>Profil</label>
-                                <textarea class="form-control" rows="4" id="corpdescription" name="profil">{{$item->profil}}</textarea>
+                                <textarea class="form-control" rows="4" id="corpdescription" name="profil" required="">{{$item->profil}}</textarea>
                             </div>
                         </div>
                     </div>

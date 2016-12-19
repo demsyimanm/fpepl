@@ -90,7 +90,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control pull-right" id="reservation" name="tanggal">
+                                    <input type="text" class="form-control pull-right" id="reservation" name="tanggal" required="">
                                 </div><!-- /.input group -->
                             </div><!-- /.form group -->
                         </div><!-- /.box-body -->
@@ -101,7 +101,7 @@
                         <div class="box-body pad">
 
                             <textarea id="editor1" name="konten" class="textarea" placeholder="Place some text here"
-                                      style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                      style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" required=""></textarea>
 
                             {{csrf_field()}}
                             <button type="submit" class="btn btn-primary btn-block margin-bottom">SUBMIT</button>

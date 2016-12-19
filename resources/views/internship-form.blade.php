@@ -29,7 +29,7 @@
               <div class="form-group">
               <form action="daftarkp" method="POST">
                 <label>Perusahaan</label>
-                <select class="form-control" id="corporation" name="perusahaan" <?php if($cek>0) {echo 'disabled';}?>>
+                <select class="form-control" id="corporation" name="perusahaan" required="" <?php if($cek>0) {echo 'disabled';}?>>
 
                   <option value="0">-</option>
                       @foreach($list as $key)
@@ -39,7 +39,7 @@
               </div>
               <div class="form-group">
                 <label>Nama Kelompok</label>
-                <div>    <input type="text" name="namakelompok" <?php if($cek>0) {echo 'disabled';}?>></input></div>
+                <div>    <input type="text" name="namakelompok" required="" <?php if($cek>0) {echo 'disabled';}?>></input></div>
             
               </div>
 
@@ -48,19 +48,19 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label>Tanggal Mulai</label>
-                <input type="text" data-provide="datepicker" class="datepicker form-control" name="tanggalmulai" <?php if($cek>0) {echo 'disabled';}?> >
+                <input type="text" data-provide="datepicker" class="datepicker form-control" required="" name="tanggalmulai" <?php if($cek>0) {echo 'disabled';}?> >
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Tanggal Selesai</label>
-                <input type="text" data-provide="datepicker" class="datepicker form-control" name="tanggalselesai" value="" <?php if($cek>0) {echo 'disabled';}?>>
+                <input type="text" data-provide="datepicker" class="datepicker form-control" required="" name="tanggalselesai" value="" <?php if($cek>0) {echo 'disabled';}?>>
               </div>
             </div>
             <div class="col-md-4">
               <div class="form-group">
                 <label>Kelompok</label>
-                <select class="form-control" name="friend" <?php if($cek>0) {echo 'disabled';}?>>
+                <select class="form-control" name="friend" required="" <?php if($cek>0) {echo 'disabled';}?>>
                   <option value="0">-</option>
                         @foreach($mahasiswa as $key)
                          <option value="{{$key->id}}">{{$key->nm_pd}}</option>
